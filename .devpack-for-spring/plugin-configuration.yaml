@@ -42,15 +42,12 @@ buildpack:
       Plugin for OCI image generation using Cloud Native Buildpacks
     tasks:
       paketo-base: bootBuildImage
-      tanzu-base:
+      tanzu-lite:
         - bootBuildImage
-        - --builder=registry.tanzu.vmware.com/tanzu-buildpacks/builder:base
-      tanzu-tiny:
-        - bootBuildImage
-        - --builder=registry.tanzu.vmware.com/tanzu-buildpacks/builder:tiny
+        - --builder=tanzu-build.packages.broadcom.com/tanzu-java-buildpack/java-lite
       tanzu-full:
         - bootBuildImage
-        - --builder=registry.tanzu.vmware.com/tanzu-buildpacks/builder:full
+        - --builder=tanzu-build.packages.broadcom.com/tanzu-java-buildpack/java
   maven:
     id: org.springframework.boot
     version: 4.1.1
@@ -59,15 +56,12 @@ buildpack:
       Plugin for OCI image generation using Cloud Native Buildpacks
     tasks:
       paketo-base: :build-image
-      tanzu-base:
+      tanzu-lite:
         - :build-image
-        - --builder=registry.tanzu.vmware.com/tanzu-buildpacks/builder:base
-      tanzu-tiny:
-        - :build-image
-        - --builder=registry.tanzu.vmware.com/tanzu-buildpacks/builder:tiny
+        - --builder=tanzu-build.packages.broadcom.com/tanzu-java-buildpack/java-lite
       tanzu-full:
         - :build-image
-        - --builder=registry.tanzu.vmware.com/tanzu-buildpacks/builder:full
+        - --builder=tanzu-build.packages.broadcom.com/tanzu-java-buildpack/java
 rockcraft:
   gradle:
     id: io.github.rockcrafters.rockcraft
