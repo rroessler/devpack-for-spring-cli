@@ -32,6 +32,42 @@ dependencies:
       Save project dependencies
     tasks:
       dependencies-export: :create-build-rock
+buildpack:
+  gradle:
+    id: org.springframework.boot
+    version: 4.1.1
+    default-task: paketo-base
+    repository: gradlePluginPortal()
+    description: |
+      Plugin for OCI image generation using Cloud Native Buildpacks
+    tasks:
+      paketo-base: bootBuildImage
+      tanzu-base:
+        - bootBuildImage
+        - --builder=registry.tanzu.vmware.com/tanzu-buildpacks/builder:base
+      tanzu-tiny:
+        - bootBuildImage
+        - --builder=registry.tanzu.vmware.com/tanzu-buildpacks/builder:tiny
+      tanzu-full:
+        - bootBuildImage
+        - --builder=registry.tanzu.vmware.com/tanzu-buildpacks/builder:full
+  maven:
+    id: org.springframework.boot
+    version: 4.1.1
+    default-task: paketo-base
+    description: |
+      Plugin for OCI image generation using Cloud Native Buildpacks
+    tasks:
+      paketo-base: :build-image
+      tanzu-base:
+        - :build-image
+        - --builder=registry.tanzu.vmware.com/tanzu-buildpacks/builder:base
+      tanzu-tiny:
+        - :build-image
+        - --builder=registry.tanzu.vmware.com/tanzu-buildpacks/builder:tiny
+      tanzu-full:
+        - :build-image
+        - --builder=registry.tanzu.vmware.com/tanzu-buildpacks/builder:full
 rockcraft:
   gradle:
     id: io.github.rockcrafters.rockcraft
