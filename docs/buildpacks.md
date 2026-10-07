@@ -71,7 +71,7 @@ buildpack:
         - bootBuildImage
         - --builder=tanzu-build.packages.broadcom.com/tanzu-java-buildpack/java
   maven:
-    id: org.springframework.boot
+    id: org.springframework.boot:spring-boot-maven-plugin
     version: 4.1.1
     default-task: paketo-base
     description: |
